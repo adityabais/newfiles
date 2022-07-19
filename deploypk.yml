@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+spec:
+  selector:
+    matchLabels:
+      apps: mydeployment
+  template:
+    metadata:
+      name: testpod
+      labels:
+        apps: mydeployment
+        devservice: dev
+    spec:
+      containers:
+        - name: web
+          image: httpd
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: config
+              mountPath: "/usr/local/apache2/conf"
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: newconfig
+

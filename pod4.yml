@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+spec:
+  selector:
+    matchLabels:
+      apps: mydeployment
+  template:
+    metadata:
+      name: testpod
+      labels:
+        apps: mydeployment
+        devservice: dev
+    spec:
+      containers:
+        - name: web
+          image: httpd
+          ports:
+            - containerPort: 80
+          env:
+            - name: name
+              value: "aditya"
+            - name : mapvalue
+              valueFrom:
+                configMapKeyRef:
+                  name: myconfig
+                  key: myvaluefromconfigmap

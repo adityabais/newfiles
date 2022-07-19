@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container
+spec:
+  containers:
+    - image: httpd
+      name: app
+      ports:
+        - containerPort: 80
+    - image: ubuntu
+      name: app1
+      command: ["/bin/bash","-c","while true; do echo aditya;sleep 5;done;"]

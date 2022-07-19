@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 80
+
+---
+
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: headless
+subsets:
+  - addresses:
+      - ip: 172.17.0.2
+    ports:
+      - port: 80
