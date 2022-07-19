@@ -1,17 +1,14 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: testpod4
+  name: testpod3
   annotations:
-    description: testpod4
+    description: new pod
 spec:
   containers:
-    - name: c00
+    - name: coo
       image: ubuntu
       command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
     - name: coo1
       image: ubuntu
-      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder1; sleep 5 ; done"]
-      env:
-        - name: MYNAME
-          value: aditya
+      command: ["/bin/bash", "-c", "while true; do echo adiya; sleep 5 ; done"]

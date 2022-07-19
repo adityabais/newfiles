@@ -1,14 +1,16 @@
-kind: ReplicationController
-apiVersion: v1
+kind: ReplicaSet
+apiVersion: apps/v1
 metadata:
-  name: myreplica
+  name: myrs
 spec:
   replicas: 2
   selector:
-    myname: aditya
+    matchExpressions:
+      - {key: myname, operator: In, values: [aditya,bais,pratap]}
+      - {key: env, operator: NotIn, values: [production]}
   template:
     metadata:
-      name: testpod8
+      name: testpod10
       labels:
         myname: aditya
     spec:

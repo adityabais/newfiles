@@ -1,12 +1,12 @@
-apiVersion: v1
 kind: Pod
+apiVersion: v1
 metadata:
-  name: multi-container
+  name: testpod6
+  labels:
+    env: development
 spec:
   containers:
-    - image: ubuntu
-      name: app1
-      env:
-        - name: name
-          value: aditya
-      command: ["/bin/bash","-c","while true; do echo aditya;sleep 5;done;"]
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+

@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: myenvconfig
+spec:
+  containers:
+    - name: c1
+      image: centos
+      command: ["/bin/bash","-c","while true;do ech aditya;sleep 5;done"]
+      env:
+        - name: MYENV
+          valueFrom:
+            configMapKeyRef:
+              name: mymap
+              key: sample.conf

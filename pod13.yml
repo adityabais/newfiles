@@ -7,4 +7,7 @@ spec:
     - name: c00
       image: ubuntu
       command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
-  restartPolicy: Never
+    - name: c01
+      image: httpd
+      ports:
+        - containerPort: 80

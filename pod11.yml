@@ -1,10 +1,12 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: testpod
+  name: testpod11
+  labels:
+    myname: bais
 spec:
   containers:
-    - name: c00
+    - name: cee
       image: ubuntu
       command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
-  restartPolicy: Never
+

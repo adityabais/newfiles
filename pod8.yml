@@ -1,28 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+kind: Pod
+apiVersion: v1
 metadata:
-  name: mydeployment
+  name: testpod7
+  labels:
+    myname: aditya
+    env: development
+    dept: software
 spec:
-  selector:
-    matchLabels:
-      apps: mydeployment
-  template:
-    metadata:
-      name: testpod
-      labels:
-        apps: mydeployment
-        devservice: dev
-    spec:
-      containers:
-        - name: testpod
-          image: ubuntu
-          command: ["/bin/bash","-c","while true; do echo aditya;sleep 5;done;"]
-          volumeMounts:
-            - name: config
-              mountPath: "/temp"
-              readOnly: true
-      volumes:
-        - name: config
-          configMap:
-            name: newconfig
-
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+  nodeSelector:
+    hardware: t2-medium
